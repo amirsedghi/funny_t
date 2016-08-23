@@ -1,0 +1,79 @@
+
+.topbar {
+	color: white;
+	height: 80px;
+	background-color: darkgrey;
+	vertical-align: top;
+	display: inline-block;
+	width: 1100px;
+	margin: auto
+
+}
+
+.cartstatus {
+	display: inline-block;
+	margin-left: 80%;
+	vertical-align: top;
+}
+
+.branding {
+	display: inline-block;
+	font-size: 40px;
+	vertical-align: top;
+}
+
+
+.categories {
+	margin-top: 15px;
+	background-color: darkgrey;
+	height: 300px;
+	width: 175px;
+	color: white;
+	display: inline-block;
+	border: 1px solid black;
+}
+
+.orders {
+	margin-left: 150px;
+	margin-top: 20px;
+	width: 75%;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.orderinfo {
+	margin-left: 150px;
+	margin-top: 50px;
+	width: 300px;
+}
+
+tr:nth-child(even) {
+	background: #FFF
+}
+
+tr:nth-child(odd) {
+	background: #CCC
+}
+
+.ordertotal {
+	margin-left: 650px;
+	margin-top: 15px;
+}
+
+#showall {
+	font-style: italic;
+}
+
+.product_grid {
+	padding: 15px;
+	width: 900px;
+	height: 800px;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid black;
+}
+.product {
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+}
