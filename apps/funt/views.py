@@ -6,6 +6,7 @@ from . import models
 from .models import Product, Address, Order, Customer, Review, Comment
 import math
 from decimal import Decimal
+from django.db.models import Count
 # Create your views here.
 def admin(request):
     request.session['admin'] = 0
@@ -89,7 +90,7 @@ def adding(request):
 
 def edit(request, id):
     the_product = Product.objects.get(id = id)
-    products_cat = Product.objects.values('category')
+    products_cat = Product.objects.values('category').annotate(p_count = Count('category'))
     print "$$$$$$$$$$$$$$$$$********************$$$$$$$$$$$$$$$$$$$$"
     print products_cat.query
     print "$$$$$$$$$$$$$$$$$********************$$$$$$$$$$$$$$$$$$$$"
