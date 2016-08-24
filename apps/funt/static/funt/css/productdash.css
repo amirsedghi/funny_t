@@ -1,0 +1,40 @@
+img{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+table{
+  text-align: center;
+  width: 500px;
+  margin-left: 500px;
+  margin-top: 50px;
+}
+
+tr{
+  margin-right: 10px;
+}
+
+.header div{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.add{
+  display: inline-block;
+  width: 300px;
+}
+
+.search{
+  display: inline-block;
+  width: 300px;
+}
+
+.logout{
+  display: inline-block;
+  width: 300px;
+}
+
+* {
+  text-align: center
+}
