@@ -138,10 +138,39 @@ def delete(request, id):
     return redirect('/dashboard/products/1')
 
 def index(request):
+    sum = 0
+    # print request.session['addcart']
+    if 'addcart' not in request.session:
+        request.session['addcart']=[]
+    for c in request.session['addcart']:
+        sum += int(c['quantity'])
+    print 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+
+    print request.session['addcart']
     products = Product.objects.all()
     category = Product.objects.values('category').annotate(p_count = Count('category'))
-    context = {'products': products, 'category': category}
+    context = {'products': products, 'category': category, 'cart': sum}
     return render(request, 'funt/index.html', context)
+
+def show(request, id):
+    the_product = Product.objects.get(id = id)
+    context = {'product': the_product}
+    return render(request, 'funt/show.html', context)
+
+def multiply(value, arg):
+    return value*arg
 
 def cart(request):
     return render(request, 'funt/cart.html')
+
+def addcart(request):
+    # for a in request.session['addcart']:
+    #     if a['id'] == request.POST['id']:
+    #         temp = a['quantity']
+    #         a.update({'id':request.POST['id'], 'quantity' : str(int(request.POST['quantity'])+int(temp))})
+    sessionlist = request.session['addcart']
+    sessionlist.insert(0,{'id':request.POST['id'], 'quantity':request.POST['quantity']})
+    request.session['addcart'] = sessionlist
+    print 'BBBBBBBBBBBBBBBBBBBBBBBB'
+    print request.session['addcart']
+    return redirect('/')

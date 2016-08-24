@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'^edit/(?P<id>\d+)$', views.edit),
     url(r'^delete/(?P<id>\d+)$', views.delete),
     url(r'^editing/(?P<id>\d+)$', views.editing),
+    url(r'^product/show/(?P<id>\d+)$', views.show),
+    url(r'^addcart$', views.addcart),
 ]
