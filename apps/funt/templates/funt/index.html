@@ -24,12 +24,12 @@
       <!-- end topbar -->
       <!-- start categories -->
       <div class="categories">
-      <input type="text" name="search" value="Search">
       <h4>Categories</h4>
-      <p>Dirty Tees (10)</p>
-      <p>Clean Tees (5)</p>
-      <p>Dog Shoes (13)</p>
-      <p>Llama Shoes (1)</p>
+      <!-- start categories loop -->
+      {% for item in category %}
+      <p>{{item.category}} {{item.p_count}}</p>
+      {% endfor %}
+      <!-- end categories loop -->
       <span id='showall'><a href="/products/all">Show All</a></span>
       </div>
       <!-- end categories -->

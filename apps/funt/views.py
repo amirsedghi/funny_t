@@ -138,7 +138,8 @@ def delete(request, id):
 
 def index(request):
     products = Product.objects.all()
-    context = {'products': products}
+    category = Product.objects.values('category').annotate(p_count = Count('category'))
+    context = {'products': products, 'category': category}
     return render(request, 'funt/index.html', context)
 
 def cart(request):

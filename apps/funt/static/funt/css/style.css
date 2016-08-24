@@ -31,6 +31,7 @@
 	color: white;
 	display: inline-block;
 	border: 1px solid black;
+	padding: 5px;
 }
 
 .orders {
@@ -66,11 +67,11 @@ tr:nth-child(odd) {
 
 .product_grid {
 	padding: 15px;
-	width: 900px;
-	height: 800px;
+	width: 950px;
+	height: 600px;
 	display: inline-block;
 	vertical-align: top;
-	border: 1px solid black;
+	border-left: 15px solid yellow;
 }
 .product {
 	display: inline-block;
