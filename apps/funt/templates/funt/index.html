@@ -36,36 +36,13 @@
       <!-- start products -->
       <div class="product_grid">
         <!-- loop through products -->
+        {% for p in products %}
         <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
+          <img src="{{p.img_one}}" height='200px' widht='200px' alt="image" />
+          <p>${{p.price}}</p>
+          <h4>{{p.name}}</h4>
         </div>
-        <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
-        </div>
-        <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
-        </div>
-        <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
-        </div>
-        <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
-        </div>
-        <div class="product">
-          <img src="{% static 'funt/images/1.jpg' %}" height='200px' widht='200px' alt="image 1" />
-          <p>$19.99</p>
-          <h4>One funny shirt!</h4>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </body>

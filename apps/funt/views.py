@@ -35,13 +35,6 @@ def productdash(request, id):
     end_index = (int(id)-1)*5 + 5
 
     five_p = Product.objects.all()[start_index:end_index]
-    print '******************'
-    print 'start index: ' + str(start_index)
-    print 'end index:' + str(end_index)
-    print five_p.query
-    print 'total page: ' + str(total_page_num)
-    print math.ceil(all_p/5.00)
-    print '******************'
     arr = []
     for a in range(1, int(total_page_num)+1):
         arr.append(a)
@@ -97,6 +90,9 @@ def adding(request):
 def edit(request, id):
     the_product = Product.objects.get(id = id)
     products_cat = Product.objects.values('category')
+    print "$$$$$$$$$$$$$$$$$********************$$$$$$$$$$$$$$$$$$$$"
+    print products_cat.query
+    print "$$$$$$$$$$$$$$$$$********************$$$$$$$$$$$$$$$$$$$$"
     context = {'p': the_product, 'categories': products_cat}
     return render(request, 'funt/edit.html', context)
 
@@ -121,10 +117,11 @@ def editing(request, id):
         messages.error(request, "Inventory count cannot be empty")
         request.session['check'] = 0
     the_product = Product.objects.get(id = id)
-    rep_product = Product.objects.get(name = request.POST['product_name'])
-    if rep_product and the_product.name != request.POST['product_name']:
-        messages.error(request, "This name is already taken")
-        request.session['check'] = 0
+    rep_product = Product.objects.filter(name = request.POST['product_name'])
+    if rep_product:
+        if id != rep_product.id:
+            messages.error(request, "This name is already taken")
+            request.session['check'] = 0
     if request.POST['category'] == 'Category':
         the_category = request.POST['new_category']
     else:
@@ -140,7 +137,9 @@ def delete(request, id):
     return redirect('/dashboard/products/1')
 
 def index(request):
-    return render(request, 'funt/index.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'funt/index.html', context)
 
 def cart(request):
     return render(request, 'funt/cart.html')
