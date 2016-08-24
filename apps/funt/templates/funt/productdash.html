@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <title>Products</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'funt/js/productdash.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'funt/css/productdash.css' %}" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    {% if request.session.admin == 1 %}
+    <div class="header">
+
+      <div class="search">
+        <form class="" action="/search" method="post">
+          {% csrf_token %}
+          <input type="text" name="search" value="">
+          <input type="submit" value="search">
+        </form>
+      </div>
+      <div class="add">
+        <form class="" action="/add" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Add new product">
+        </form>
+      </div>
+      <div class="logout">
+        <a href="/admin">Logout</a>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>
+          Picture
+        </th>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Inventory Count
+        </th>
+        <th>
+          Quantity Sold
+        </th>
+        <th>
+          Action
+        </th>
+      </tr>
+      {% for p in products %}
+      <tr>
+        <td>
+          <img src="{{p.img_one}}" alt="" />
+        </td>
+        <td>
+          {{p.id}}
+        </td>
+        <td>
+          {{p.name}}
+        </td>
+        <td>
+          {{p.inventory_count}}
+        </td>
+        <td>
+          {{p.quantity_sold}}
+        </td>
+        <td>
+          <a href="/edit/{{p.id}}">edit</a> <a href="/delete/{{p.id}}">delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="pagination">
+      {% for a in total_page %}
+      <div class="page">
+        <a href="/dashboard/products/{{a}}">{{a}}</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>
+      <h2>You do not have the permission to view this page</h2>
+    </p>
+    {% endif %}
+  </body>
+</html>
