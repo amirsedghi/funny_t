@@ -2,13 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'funt/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
     <title>Category</title>
+    <title></title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   </head>
   <body>
-    {% for c in products %}
+    <div class="container">
+      <!-- start topbar -->
+      <div class="topbar">
+        <div class="branding">
+          Funny Tees
+        </div>
+        <div class="cartstatus">
+          <a href="/cart"><span>Shopping Cart ({{cart}})</span></a>
+        </div>
+      </div>
+      <!-- end topbar -->
+      <!-- start categories -->
+      <div class="categories">
+      <h4>Categories</h4>
+      <!-- start categories loop -->
+      {% for item in products %}
+      <p><a href="/category/{{item.category}}">{{item.category}}</a> {{item.p_count}}</p>
+      {% endfor %}
       <p>
-        <img src="{{c.img_one}}" alt="" />
+        <a href="/">Show all</a>
       </p>
-    {% endfor %}
+      <!-- end categories loop -->
+      <!-- <span id='showall'><a href="/products/all">Show All</a></span> -->
+      </div>
+      <!-- end categories -->
+      <!-- start products -->
+      <div class="product_grid">
+        <!-- loop through products -->
+        {% for c in categories %}
+        <div class="product">
+          <a href="/product/show/{{c.id}}"><img src="{{c.img_one}}" height='200px' widht='200px' alt="image" />
+          <p>${{c.price}}</p>
+          <h4>{{c.name}}</h4></a>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
   </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
