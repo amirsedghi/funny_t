@@ -63,26 +63,14 @@
       <div class="similar_products">
         <!-- loop through products -->
         <h2>Similar Products</h2>
+        {% for r in rest %}
         <div class="product">
-          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
-          <p>$12.99</p>
-          <h4>Some thing</h4></a>
+          <a href="/product/show/{{r.id}}"><img src="{{r.img_one}}" height='200px' widht='200px' alt="image" />
+          <p>${{r.price}}</p>
+          <h4>{{r.name}}</h4></a>
         </div>
-        <div class="product">
-          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
-          <p>$12.99</p>
-          <h4>Some thing</h4></a>
-        </div>
-        <div class="product">
-          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
-          <p>$12.99</p>
-          <h4>Some thing</h4></a>
-        </div>
-        <div class="product">
-          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
-          <p>$12.99</p>
-          <h4>Some thing</h4></a>
-        </div>
+        {% endfor %}
+
       </div>
     </div>
   </body>

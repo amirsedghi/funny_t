@@ -136,7 +136,7 @@
           <div class="form-row">
             <label>
               <span>Last Name:</span>
-              <input type="text" size="20" name="lbilling_lastname">
+              <input type="text" size="20" name="billing_lastname">
             </label>
           </div>
 
@@ -205,6 +205,13 @@
         </form>
       </div>
 		</div>
+    {% if messages %}
+      {% for m in messages %}
+        <p>
+          {{m}}
+        </p>
+      {% endfor %}
+    {% endif %}
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>

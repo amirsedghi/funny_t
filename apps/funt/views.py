@@ -7,6 +7,7 @@ from .models import Product, Address, Order, Customer, Review, Comment, OrderPro
 import math
 from decimal import Decimal
 from django.db.models import Count
+from django.db.models import Q
 # Create your views here.
 def admin(request):
     request.session['admin'] = 0
@@ -157,7 +158,8 @@ def index(request):
 
 def show(request, id):
     the_product = Product.objects.get(id = id)
-    context = {'product': the_product}
+    show_rest = Product.objects.filter(category = the_product.category).filter(~Q(id = id ))
+    context = {'product': the_product, 'rest':show_rest}
     return render(request, 'funt/show.html', context)
 
 def multiply(value, arg):
@@ -188,7 +190,54 @@ def addcart(request):
     print request.session['addcart']
     return redirect('/')
 
+
 def processorder(request):
     request.session['check'] = 1
+    if len(request.POST['firstname'])<1:
+        messages.error(request, "Please enter your name")
+        request.session['check'] = 0
+    if len(request.POST['lastname'])<1:
+        messages.error(request, "Please enter your last name")
+        request.session['check'] = 0
+    if len(request.POST['address'])<1:
+        messages.error(request, "Please enter your address")
+        request.session['check'] = 0
+    if len(request.POST['city'])<1:
+        messages.error(request, "Please enter your city")
+        request.session['check'] = 0
+    if len(request.POST['state'])<1:
+        messages.error(request, "Please enter your state")
+        request.session['check'] = 0
+    if len(request.POST['zipcode'])<1:
+        messages.error(request, "Please enter your zipcode")
+        request.session['check'] = 0
+    if len(request.POST['billing_firstname'])<1:
+        messages.error(request, "Please enter your billing name")
+        request.session['check'] = 0
+    if len(request.POST['billing_lastname'])<1:
+        messages.error(request, "Please enter your billing last name")
+        request.session['check'] = 0
+    if len(request.POST['billing_address'])<1:
+        messages.error(request, "Please enter your billing address")
+        request.session['check'] = 0
+    if len(request.POST['billing_city'])<1:
+        messages.error(request, "Please enter your billing city")
+        request.session['check'] = 0
+    if len(request.POST['billing_state'])<1:
+        messages.error(request, "Please enter your billing state")
+        request.session['check'] = 0
+    if len(request.POST['billing_zipcode'])<1:
+        messages.error(request, "Please enter your billing zipcode")
+        request.session['check'] = 0
+    if request.session['check'] == 1:
+        shipping_address = Address.objects.create(address = request.POST['address'], address_two = request.POST['address2'], city = request.POST['city'], state = request.POST['state'], zipcode = request.POST['zipcode'])
+        billing_address = Address.objects.create(address = request.POST['billing_address'], address_two = request.POST['billing_address2'], city = request.POST['billing_city'], state = request.POST['billing_state'], zipcode = request.POST['billing_zipcode'])
+        the_customer = Customer.objects.create(first_name = request.POST['firstname'], last_name = request.POST['lastname'])
+        the_order = Order.objects.create(shipping_address = shipping_address, payment_address = billing_address, customer = Customer)
+        for a in request.session['addcart']:
+            the_product = Product.objects.get(id = a['id'])
+            OrderProduct.objects.create(product = the_product, order = the_order, quantity = a['quantity'])
+        request.session['addcart'] = []
+    else:
 
-    return redirect('/')
+        return redirect('/')
