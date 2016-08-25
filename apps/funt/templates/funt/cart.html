@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>Your Fun Tee Headquarters</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<<<<<<< HEAD
     <script type="text/javascript" src="{% static 'funt/js/cart.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+=======
+    <script type="text/javascript" src="{% static 'funt/js/productdash.js' %}"></script>
+>>>>>>> 9652504243096e2726e45fa00142572484761754
   </head>
   <body>
     <div class="container">
@@ -75,113 +79,100 @@
           {% csrf_token %}
           <div class="form-row">
             <label>
-              <span>First Name:</span>
-              <input type="text" size="20" name="firstname">
+              <input type="text" size="20" name="firstname" placeholder="First Name" id='sf'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>Last Name:</span>
-              <input type="text" size="20" name="lastname">
+              <input type="text" size="20" name="lastname"  placeholder="Last Name" id='sl'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>Address:</span>
-              <input type="text" size="20" name="address">
+              <input type="text" size="20" name="address" placeholder="Address" id='sa'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>Address 2:</span>
-              <input type="text" size="20" name="address2">
+              <input type="text" size="20" name="address2" placeholder="Address 2" id='sa2'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>City:</span>
-              <input type="text" size="20" name="city">
+              <input type="text" size="20" name="city" placeholder="City" id = 'sc'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>State:</span>
-              <input type="text" size="20" name="state">
+              <input type="text" size="20" name="state" placeholder="State" id= 'ss'>
             </label>
           </div>
 
           <div class="form-row">
             <label>
-              <span>Zipcode: </span>
-              <input type="text" size="20" name="zipcode">
+              <input type="text" size="20" name="zipcode" placeholder="Zipcode" id= 'sz'>
             </label>
           </div>
           <p>
-            <input type="checkbox" name="samebilling" value="" class='same' onclick="Fill(this.form)"> Billing address same as shipping
+            <input type="checkbox" name="samebilling" value="" id='same' > Billing address same as shipping
           </p>
 
           <h2>Billing Information</h2>
+          <div id="b-info">
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_firstname" placeholder="First Name" id='pf'>
+              </label>
+            </div>
 
-          <div class="form-row">
-            <label>
-              <span>First Name:</span>
-              <input type="text" size="20" name="billing_firstname">
-            </label>
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_lastname" placeholder="Last Name" id ='pl'>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_address" placeholder="Address" id = 'pa'>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_address2" placeholder="Address 2" id= 'pa2'>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_city" placeholder="City" id = 'pc'>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_state" placeholder="State" id = 'ps'>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="text" size="20" name="billing_zipcode" placeholder="Zipcode" id = 'pz'>
+              </label>
+            </div>
           </div>
 
-          <div class="form-row">
-            <label>
-              <span>Last Name:</span>
-              <input type="text" size="20" name="billing_lastname">
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>Address:</span>
-              <input type="text" size="20" name="billing_address">
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>Address 2:</span>
-              <input type="text" size="20" name="billing_address2">
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>City:</span>
-              <input type="text" size="20" name="billing_city">
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>State:</span>
-              <input type="text" size="20" name="billing_state">
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>Zipcode: </span>
-              <input type="text" size="20" name="billing_zipcode">
-            </label>
-          </div>
 
           <span class="payment-errors"></span>
 
           <div class="form-row">
             <label>
-              <span>Card Number</span>
-              <input type="text" size="20" data-stripe="number">
+              <input type="text" size="20" data-stripe="number" placeholder="Card Number">
             </label>
           </div>
 

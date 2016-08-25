@@ -5,11 +5,10 @@
 
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'funt/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
-    <title>Your Fun Tee Headquarters</title>
+    <title>Category</title>
     <title></title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
   </head>
   <body>
     <div class="container">
@@ -27,7 +26,7 @@
       <div class="categories">
       <h4>Categories</h4>
       <!-- start categories loop -->
-      {% for item in category %}
+      {% for item in products %}
       <p><a href="/category/{{item.category}}">{{item.category}}</a> {{item.p_count}}</p>
       {% endfor %}
       <p>
@@ -40,19 +39,13 @@
       <!-- start products -->
       <div class="product_grid">
         <!-- loop through products -->
-        {% for p in products %}
+        {% for c in categories %}
         <div class="product">
-          <a href="/product/show/{{p.id}}"><img src="{{p.img_one}}" height='200px' widht='200px' alt="image" />
-          <p>${{p.price}}</p>
-          <h4>{{p.name}}</h4></a>
+          <a href="/product/show/{{c.id}}"><img src="{{c.img_one}}" height='200px' widht='200px' alt="image" />
+          <p>${{c.price}}</p>
+          <h4>{{c.name}}</h4></a>
         </div>
         {% endfor %}
-        <div class="pagination">
-          Page:
-          {% for a in pages %}
-          <a href="/{{a}}">{{a}}</a>
-          {% endfor %}
-        </div>
       </div>
 
     </div>
