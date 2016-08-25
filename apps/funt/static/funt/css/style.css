@@ -142,21 +142,40 @@ tr:nth-child(odd) {
 .product_photos {
 	margin-left: 25px;
 	display: inline-block;
+	text-align: center;
+}
+
+.title{
+	font-size: 45px;
+	color: white;
+	text-shadow: 3px 3px black
 }
 
 .main_photo img {
 	width: 400px;
+	border-radius: 200px;
+}
+
+.thumbnailz_group{
+	margin-top: 5px;
+	margin-left: 50px;
+	background-color: rgba(200, 200, 200, 0.75);
+	width: 308px;
+	border-radius: 10px;
 }
 
 .thumbnailz {
 	display: inline-block;
 	padding: 5px;
 
+
+
 }
 
 .thumbnailz img {
-	width: 60px;
+	width: 90px;
 	display: inline-block;
+	border-radius: 10px;
 }
 
 .description{
@@ -164,12 +183,25 @@ tr:nth-child(odd) {
 	height: 300px;
 	display: inline-block;
 	margin-left: 100px;
-	margin-top: 100px;
+	margin-top: 60px;
 	vertical-align: top;
+	font-size: 45px;
+	color: white;
+	text-shadow: 3px 3px black;
+	letter-spacing: 10px;
 }
 
 .buy {
-	padding-left: 650px;
+	/*padding-left: 650px;*/
+	display: inline-block;
+	margin-top: 350px;
+}
+
+.desc-div{
+	width: 500px;
+	margin-right: 0px;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .similar_product img {

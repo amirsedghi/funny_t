@@ -261,6 +261,9 @@ def processorder(request):
         the_order = Order.objects.create(shipping_address = shipping_address, payment_address = billing_address, customer = the_customer)
         for a in request.session['addcart']:
             the_product = Product.objects.get(id = a['id'])
+            current_quantity = the_product.quantity
+            current_quantity += a['quantity']
+            the_product.update(quantity = current_quantity)
             OrderProduct.objects.create(product = the_product, order = the_order, quantity = a['quantity'])
         request.session['addcart'] = []
         return redirect('/')
