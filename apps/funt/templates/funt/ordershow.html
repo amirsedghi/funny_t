@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Admin - Show</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'funt/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class='container'>
+    <!-- start topbar -->
+      <div class="admintopbar">
+        <div class="branding">
+          Funny Tees Admin
+        </div>
+      </div>
+      <!-- end topbar -->
+      <div class="ordershow">
+        <!-- start order info -->
+        <div class="orderdata">
+          <p>
+            Order ID: {{order.id}}
+          </p>
+          <p>
+            Customer Shipping Info:
+          </p>
+          <p>
+            Name: {{customer.name}}
+          </p>
+          <p>
+            Address: {{order.address}}
+          </p>
+          <p>
+            City: {{order.city}}
+          </p>
+          <p>
+            State: {{order.state}}
+          </p>
+          <p>
+            Zip: {{order.zipcode}}
+          </p>
+          <p>
+            Customer Billing Info:
+          </p>
+          <p>
+            Billing Name: {{customer.name}}
+          </p>
+          <p>
+            Billing Address: {{order.address}}
+          </p>
+          <p>
+            Billing City: {{order.city}}
+          </p>
+          <p>
+            Billing State: {{order.state}}
+          </p>
+          <p>
+            Billing Zip: {{order.zipcode}}
+          </p>
+        </div>
+        <!-- end order info -->
+        <div class="orderitems">
+        	<table>
+            <col width="250">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+  					<tr>
+  						<th>
+  							ID
+  						<th>
+  							Item
+  						</th>
+  						<th>
+  							Price
+  						</th>
+              <th>
+  							Total
+  						</th>
+  						<th>
+  							Status
+  						</th>
+  					</tr>
+  						<!-- end table headers -->
+  				    <!-- order loop starts here -->
+  						<tr>
+  							<td>
+  								order id
+  							</td>
+  							<td>
+  							  item name
+  							</td>
+  							<td>
+  								item price
+  							</td>
+  							<td>
+  								item quantity
+  							</td>
+                <td>
+  								line total
+                </td>
+  						</tr>
+              <!-- order loop ends here -->
+            </table>
+            <div class="orderstatus">
+              Status: STATUS
+            </div>
+            <div class="total">
+              <p>
+                Sub total:
+              </p>
+              <p>
+                Shipping: $5
+              </p>
+              <p>
+                Total Price:
+              </p>
+            </div>
+  			</div>
+
+      </div>
+      <!-- end ordershow -->
+    </div>
+    <!-- end container -->
+  </body>
+</html>

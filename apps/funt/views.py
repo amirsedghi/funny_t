@@ -59,6 +59,9 @@ def orderdash(request, id):
     context = {'orders': five_o, 'num': arr}
     return render(request, 'funt/orderdash.html', context)
 
+def ordershow(request):
+    return render(request, 'funt/ordershow.html')
+
 
 def add(request):
     products_cat = Product.objects.values('category').annotate(p_count = Count('category'))
