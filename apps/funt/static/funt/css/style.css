@@ -1,3 +1,7 @@
+* {
+	font-family: sans-serif;
+}
+
 .topbar {
 	color: white;
 	height: 80px;
@@ -76,6 +80,9 @@ tr:nth-child(odd) {
 	display: inline-block;
 	text-align: center;
 	padding: 10px;
+}
+.product p {
+	margin-top: 10px;
 }
 .product a {
 	text-decoration: none;
