@@ -3,11 +3,57 @@
   <head>
     <meta charset="utf-8">
     <title>Order Dash</title>
+    {% load static %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'funt/css/productdash.css' %}" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <a href="/admin">Logout</a>
-
+    <table>
+      <tr>
+        <th>
+          Order ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Data
+        </th>
+        <th>
+          Billing Address
+        </th>
+        <th>
+          status
+        </th>
+      </tr>
+      {% for o in orders %}
+      <tr>
+        <td>
+          <a href="/orders/show/{{o.id}}">{{o.id}}</a>
+        </td>
+        <td>
+          {{o.customer.first_name}}
+        </td>
+        <td>
+          {{o.created_at}}
+        </td>
+        <td>
+          {{o.payment_address.address}} {{o.payment_address.city}} {{o.payment_address.state}} {{o.payment_address.zipcode}}
+        </td>
+        <td>
+          <select class="" name="status">
+            <option>In Process</option>
+            <option>Shipped</option>
+            <option>Cancelled</option>
+          </select>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% for a in num %}
+    <a href="/dashboard/orders/{{a}}">{{a}}</a>
+    {% endfor %}
   </body>
 </html>

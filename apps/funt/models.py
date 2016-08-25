@@ -32,7 +32,7 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now = True)
     shipping_address = models.OneToOneField(Address, related_name = 'sipping_add', on_delete = models.CASCADE)
     payment_address = models.OneToOneField(Address, related_name = 'payment_add', on_delete = models.CASCADE)
-    cutomer = models.ForeignKey('Customer', default = 1,  related_name = 'order_customer', on_delete = models.CASCADE)
+    customer = models.ForeignKey('Customer', default = 1,  related_name = 'order_customer', on_delete = models.CASCADE)
 
 class OrderProduct(models.Model):
     product = models.ForeignKey(Product, related_name = 'order_product', on_delete=models.CASCADE)

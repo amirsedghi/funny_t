@@ -2,8 +2,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-
-    url(r'^$', views.index),
+    url(r'^$', views.redir),
+    url(r'^(?P<id>\d+)$', views.index),
     url(r'^cart$', views.cart),
     url(r'^admin$', views.admin),
     url(r'^login$', views.login),
@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^product/show/(?P<id>\d+)$', views.show),
     url(r'^addcart$', views.addcart),
     url(r'^process_order$', views.processorder),
+
 ]

@@ -71,7 +71,7 @@
       <div class="orderinfo">
         <h2>Shipping Information</h2>
         <form class="shipping_address" action="/process_order" method="post">
-
+          {% csrf_token %}
           <div class="form-row">
             <label>
               <span>First Name:</span>

@@ -47,7 +47,17 @@ def productdash(request, id):
 
 
 def orderdash(request, id):
-    return render(request, 'funt/orderdash.html')
+    all_orders = Order.objects.count()
+    total_page_num = math.ceil(all_orders/5.00)
+    start_index = (int(id)-1)*5
+    end_index = (int(id)-1)*5 + 5
+
+    five_o = Order.objects.all().order_by('-created_at')[start_index:end_index]
+    arr = []
+    for a in range(1, int(total_page_num)+1):
+        arr.append(a)
+    context = {'orders': five_o, 'num': arr}
+    return render(request, 'funt/orderdash.html', context)
 
 
 def add(request):
@@ -140,7 +150,17 @@ def delete(request, id):
     Product.objects.filter(id = id).delete()
     return redirect('/dashboard/products/1')
 
-def index(request):
+def index(request, id):
+    all_p = Product.objects.count()
+    total_page_num = math.ceil(all_p/6.00)
+    start_index = (int(id)-1)*6
+    end_index = (int(id)-1)*6 + 6
+
+    five_p = Product.objects.all().order_by('created_at')[start_index:end_index]
+    arr = []
+    for a in range(1, int(total_page_num)+1):
+        arr.append(a)
+
     sum_item = 0
     # print request.session['addcart']
     if 'addcart' not in request.session:
@@ -155,7 +175,7 @@ def index(request):
     print request.session['addcart']
     products = Product.objects.all()
     category = Product.objects.values('category').annotate(p_count = Count('category'))
-    context = {'products': products, 'category': category, 'cart': sum_item}
+    context = {'products': five_p, 'category': category, 'cart': sum_item, 'pages': arr}
     return render(request, 'funt/index.html', context)
 
 def show(request, id):
@@ -235,7 +255,7 @@ def processorder(request):
         shipping_address = Address.objects.create(address = request.POST['address'], address_two = request.POST['address2'], city = request.POST['city'], state = request.POST['state'], zipcode = request.POST['zipcode'])
         billing_address = Address.objects.create(address = request.POST['billing_address'], address_two = request.POST['billing_address2'], city = request.POST['billing_city'], state = request.POST['billing_state'], zipcode = request.POST['billing_zipcode'])
         the_customer = Customer.objects.create(first_name = request.POST['firstname'], last_name = request.POST['lastname'])
-        the_order = Order.objects.create(shipping_address = shipping_address, payment_address = billing_address, customer = Customer)
+        the_order = Order.objects.create(shipping_address = shipping_address, payment_address = billing_address, customer = the_customer)
         for a in request.session['addcart']:
             the_product = Product.objects.get(id = a['id'])
             OrderProduct.objects.create(product = the_product, order = the_order, quantity = a['quantity'])
@@ -243,3 +263,6 @@ def processorder(request):
         return redirect('/')
     else:
         return redirect('/cart')
+
+def redir(request):
+    return redirect('/1')
