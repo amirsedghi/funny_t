@@ -120,7 +120,9 @@ def editing(request, id):
     the_product = Product.objects.get(id = id)
     rep_product = Product.objects.filter(name = request.POST['product_name'])
     if rep_product:
-        if id != rep_product.id:
+        print id
+        print rep_product[0].id
+        if int(id) != rep_product[0].id:
             messages.error(request, "This name is already taken")
             request.session['check'] = 0
     if request.POST['category'] == 'Category':
