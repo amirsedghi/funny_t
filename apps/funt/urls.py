@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^admin$', views.admin),
     url(r'^login$', views.login),
     url(r'^dashboard/orders/(?P<id>\d+)$', views.orderdash),
+    url(r'^ordershow$', views.ordershow),
     url(r'^dashboard/products/(?P<id>\d+)$', views.productdash),
     url(r'^add$', views.add),
     url(r'^product/adding$', views.adding),

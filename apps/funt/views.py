@@ -49,6 +49,9 @@ def productdash(request, id):
 def orderdash(request, id):
     return render(request, 'funt/orderdash.html')
 
+def ordershow(request):
+    return render(request, 'funt/ordershow.html')
+
 
 def add(request):
     products_cat = Product.objects.values('category').annotate(p_count = Count('category'))
