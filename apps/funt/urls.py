@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^product/show/(?P<id>\d+)$', views.show),
     url(r'^addcart$', views.addcart),
     url(r'^process_order$', views.processorder),
-
+    url(r'^orders/show/(?P<id>\d+)$', views.ordershow),
+    url(r'^category/(?P<category>\w+)$', views.showcategory),
 ]

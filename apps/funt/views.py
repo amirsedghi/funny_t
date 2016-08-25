@@ -269,3 +269,15 @@ def processorder(request):
 
 def redir(request):
     return redirect('/1')
+
+
+def ordershow(request, id):
+    the_order = Order.objects.get(id = id)
+    the_products = OrderProduct.objects.filter(order = the_order)
+    context = {'order': the_order, 'orderproducts': the_products }
+    return render(request, 'funt/ordershow.html', context)
+
+def showcategory(request, category):
+    the_products = Product.objects.filter(category = category)
+    context = {'products': the_products}
+    return render(request, 'funt/category.html', context)

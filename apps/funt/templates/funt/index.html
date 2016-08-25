@@ -27,10 +27,10 @@
       <h4>Categories</h4>
       <!-- start categories loop -->
       {% for item in category %}
-      <p>{{item.category}} {{item.p_count}}</p>
+      <p><a href="/category/{{item.category}}">{{item.category}}</a> {{item.p_count}}</p>
       {% endfor %}
       <!-- end categories loop -->
-      <span id='showall'><a href="/products/all">Show All</a></span>
+      <!-- <span id='showall'><a href="/products/all">Show All</a></span> -->
       </div>
       <!-- end categories -->
       <!-- start products -->

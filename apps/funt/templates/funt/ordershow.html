@@ -10,6 +10,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
+    {% load multiply %}
     <div class='container'>
     <!-- start topbar -->
       <div class="admintopbar">
@@ -28,37 +29,37 @@
             Customer Shipping Info:
           </p>
           <p>
-            Name: {{customer.name}}
+            Name: {{order.customer.first_name}}
           </p>
           <p>
-            Address: {{order.address}}
+            Address: {{order.shipping_address.address}}
           </p>
           <p>
-            City: {{order.city}}
+            City: {{order.shipping_address.city}}
           </p>
           <p>
-            State: {{order.state}}
+            State: {{order.shipping_address.state}}
           </p>
           <p>
-            Zip: {{order.zipcode}}
+            Zip: {{order.shipping_address.zipcode}}
           </p>
           <p>
             Customer Billing Info:
           </p>
           <p>
-            Billing Name: {{customer.name}}
+            Billing Name: {{order.customer.name}}
           </p>
           <p>
-            Billing Address: {{order.address}}
+            Billing Address: {{order.payment_address.address}}
           </p>
           <p>
-            Billing City: {{order.city}}
+            Billing City: {{order.payment_address.city}}
           </p>
           <p>
-            Billing State: {{order.state}}
+            Billing State: {{order.payment_address.state}}
           </p>
           <p>
-            Billing Zip: {{order.zipcode}}
+            Billing Zip: {{order.payment_address.zipcode}}
           </p>
         </div>
         <!-- end order info -->
@@ -86,37 +87,39 @@
   					</tr>
   						<!-- end table headers -->
   				    <!-- order loop starts here -->
+              {% for p in orderproducts %}
   						<tr>
   							<td>
-  								order id
+  								{{p.id}}
   							</td>
   							<td>
-  							  item name
+  							  {{p.product.name}}
   							</td>
   							<td>
-  								item price
+  								${{p.product.price}}
   							</td>
   							<td>
-  								item quantity
+  								{{p.quantity}}
   							</td>
                 <td>
-  								line total
+  								${{p.quantity|mult:p.product.price}}
                 </td>
   						</tr>
+              {% endfor %}
               <!-- order loop ends here -->
             </table>
             <div class="orderstatus">
-              Status: STATUS
+              Status: {{order.status}}
             </div>
             <div class="total">
               <p>
-                Sub total:
+                Sub total: $120.00
               </p>
               <p>
-                Shipping: $5
+                Shipping: $5.00
               </p>
               <p>
-                Total Price:
+                Total Price: $125.00
               </p>
             </div>
   			</div>
