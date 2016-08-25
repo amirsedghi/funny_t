@@ -30,7 +30,6 @@ class Order(models.Model):
     status = models.CharField(max_length = 255, default = 'in process')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-    product = models.ManyToManyField(Product)
     shipping_address = models.OneToOneField(Address, related_name = 'sipping_add', on_delete = models.CASCADE)
     payment_address = models.OneToOneField(Address, related_name = 'payment_add', on_delete = models.CASCADE)
     cutomer = models.ForeignKey('Customer', default = 1,  related_name = 'order_customer', on_delete = models.CASCADE)
