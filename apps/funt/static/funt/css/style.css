@@ -2,6 +2,10 @@
 	font-family: sans-serif;
 }
 
+.container {
+	background: #f0efe7;
+}
+
 .topbar {
 	color: white;
 	height: 80px;
