@@ -20,57 +20,59 @@
       </div>
     </div>
     <!-- end topbar -->
-    <p>
-      <a href="/">Go Back</a>
-    </p>
-    <!-- start product photos -->
-      <div class="product_photos">
-        <h2>{{product.name}}</h2>
-        <div class="main_photo">
-          <img src="{{product.img_one}}" alt="" />
-        </div>
-        <div class="thumbnailz">
-          <img src="{{product.img_two}}" alt="" />
-        </div>
-        <div class="thumbnailz">
-          <img src="{{product.img_three}}" alt="" />
-        </div>
-        <div class="thumbnailz">
-          <img src="{{product.img_four}}" alt="" />
-        </div>
-      </div>
-      <!-- end product photos -->
-      <!-- start description and purchase button -->
-      <p class="description">
-          {{product.description}}
+    <div class="container">
+      <p>
+        <a href="/">Go Back</a>
       </p>
-        <div class="buy">
-          <form class="" action="/addcart" method="post">
-          {% csrf_token %}
-          <select class="quantity" name="quantity">
-            <option> 1 </option>
-            <option> 2 </option>
-            <option> 3 </option>
-            <option> 4 </option>
-          </select>
-          <input type="hidden" name="id" value="{{product.id}}">
-          <input type="submit"  value="Buy">
-        </form>
+      <!-- start product photos -->
+        <div class="product_photos">
+          <h2>{{product.name}}</h2>
+          <div class="main_photo">
+            <img src="{{product.img_one}}" alt="" />
+          </div>
+          <div class="thumbnailz">
+            <img src="{{product.img_two}}" alt="" />
+          </div>
+          <div class="thumbnailz">
+            <img src="{{product.img_three}}" alt="" />
+          </div>
+          <div class="thumbnailz">
+            <img src="{{product.img_four}}" alt="" />
+          </div>
         </div>
-      </div>
-      <!-- end description and purchase divs -->
-      <!-- start similar items -->
-      <div class="similar_products">
-        <!-- loop through products -->
-        <h2>Similar Products</h2>
-        {% for r in rest %}
-        <div class="product">
-          <a href="/product/show/{{r.id}}"><img src="{{r.img_one}}" height='200px' widht='200px' alt="image" />
-          <p>${{r.price}}</p>
-          <h4>{{r.name}}</h4></a>
-        </div>
-        {% endfor %}
+        <!-- end product photos -->
+        <!-- start description and purchase button -->
+        <p class="description">
+            {{product.description}}
+        </p>
+          <div class="buy">
+            <form class="" action="/addcart" method="post">
+            {% csrf_token %}
+            <select class="quantity" name="quantity">
+              <option> 1 </option>
+              <option> 2 </option>
+              <option> 3 </option>
+              <option> 4 </option>
+            </select>
+            <input type="hidden" name="id" value="{{product.id}}">
+            <input type="submit"  value="Buy">
+          </form>
+          </div>
+        <!-- </div> -->
+        <!-- end description and purchase divs -->
+        <!-- start similar items -->
+        <div class="similar_products">
+          <!-- loop through products -->
+          <h2>Similar Products</h2>
+          {% for r in rest %}
+          <div class="product">
+            <a href="/product/show/{{r.id}}"><img src="{{r.img_one}}" height='200px' widht='200px' alt="image" />
+            <p>${{r.price}}</p>
+            <h4>{{r.name}}</h4></a>
+          </div>
+          {% endfor %}
 
+        </div>
       </div>
     </div>
   </body>
