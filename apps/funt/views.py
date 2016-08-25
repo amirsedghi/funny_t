@@ -240,6 +240,6 @@ def processorder(request):
             the_product = Product.objects.get(id = a['id'])
             OrderProduct.objects.create(product = the_product, order = the_order, quantity = a['quantity'])
         request.session['addcart'] = []
-    else:
-
         return redirect('/')
+    else:
+        return redirect('/cart')
