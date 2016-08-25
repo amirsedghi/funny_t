@@ -20,22 +20,26 @@ class Product(models.Model):
 
 class Address(models.Model):
     address = models.CharField(max_length = 255)
-    address_two = models.CharField(max_length = 255)
+    address_two = models.CharField(max_length = 255, default='')
     city = models.CharField(max_length = 20)
     state = models.CharField(max_length = 2)
     zipcode = models.CharField(max_length = 5)
 
 
-
 class Order(models.Model):
-    quantity = models.IntegerField()
     status = models.CharField(max_length = 255, default = 'in process')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     product = models.ManyToManyField(Product)
     shipping_address = models.OneToOneField(Address, related_name = 'sipping_add', on_delete = models.CASCADE)
     payment_address = models.OneToOneField(Address, related_name = 'payment_add', on_delete = models.CASCADE)
-    customer = models.ForeignKey('Customer')
+    cutomer = models.ForeignKey('Customer', default = 1,  related_name = 'order_customer', on_delete = models.CASCADE)
+
+class OrderProduct(models.Model):
+    product = models.ForeignKey(Product, related_name = 'order_product', on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name = 'product_order', on_delete = models.CASCADE)
+    quantity = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add = True)
 
 class Customer(models.Model):
     first_name = models.CharField(max_length = 255)

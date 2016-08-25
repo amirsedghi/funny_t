@@ -3,7 +3,7 @@ from django.contrib.messages import constants as messages
 from django.contrib import messages
 from django.db.models import Count
 from . import models
-from .models import Product, Address, Order, Customer, Review, Comment
+from .models import Product, Address, Order, Customer, Review, Comment, OrderProduct
 import math
 from decimal import Decimal
 from django.db.models import Count
@@ -25,7 +25,7 @@ def login(request):
         request.session['check'] = 0
     if request.session['check'] == 1:
         request.session['admin'] =1
-        return redirect('/dashboard/orders/1')
+        return redirect('/dashboard/products/1')
     else:
         return redirect('/admin')
 
@@ -50,7 +50,7 @@ def orderdash(request, id):
 
 
 def add(request):
-    products_cat = Product.objects.values('category')
+    products_cat = Product.objects.values('category').annotate(p_count = Count('category'))
     context = {'categories': products_cat}
     return render(request, 'funt/add.html', context)
 
@@ -138,18 +138,21 @@ def delete(request, id):
     return redirect('/dashboard/products/1')
 
 def index(request):
-    sum = 0
+    sum_item = 0
     # print request.session['addcart']
     if 'addcart' not in request.session:
         request.session['addcart']=[]
     for c in request.session['addcart']:
-        sum += int(c['quantity'])
+        sum_item += int(c['quantity'])
     print 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 
+    request.session['sum_item'] = sum_item
+    print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+    print request.session['sum_item']
     print request.session['addcart']
     products = Product.objects.all()
     category = Product.objects.values('category').annotate(p_count = Count('category'))
-    context = {'products': products, 'category': category, 'cart': sum}
+    context = {'products': products, 'category': category, 'cart': sum_item}
     return render(request, 'funt/index.html', context)
 
 def show(request, id):
@@ -161,7 +164,17 @@ def multiply(value, arg):
     return value*arg
 
 def cart(request):
-    return render(request, 'funt/cart.html')
+    product_cart = []
+    total_price = Decimal(0.00)
+    for a in request.session['addcart']:
+        the_product = Product.objects.get(id = a['id'])
+        total = the_product.price*Decimal(a['quantity'])
+        product_cart.append([the_product, a['quantity'], total])
+        total_price=total_price + total
+    context = {'the_cart':product_cart, 'total': total_price}
+    print '(((((((((((((((((())))))))))))))))))'
+    print request.session['sum_item']
+    return render(request, 'funt/cart.html', context)
 
 def addcart(request):
     # for a in request.session['addcart']:
@@ -173,4 +186,9 @@ def addcart(request):
     request.session['addcart'] = sessionlist
     print 'BBBBBBBBBBBBBBBBBBBBBBBB'
     print request.session['addcart']
+    return redirect('/')
+
+def processorder(request):
+    request.session['check'] = 1
+
     return redirect('/')
