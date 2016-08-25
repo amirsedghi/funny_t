@@ -43,11 +43,15 @@
           <h4>{{p.name}}</h4></a>
         </div>
         {% endfor %}
+        <div class="pagination">
+          Page:
+          {% for a in pages %}
+          <a href="/{{a}}">{{a}}</a>
+          {% endfor %}
+        </div>
       </div>
+
     </div>
-    {% for a in pages %}
-    <a href="/{{a}}">{{a}}</a>
-    {% endfor %}
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>

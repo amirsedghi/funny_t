@@ -2,8 +2,13 @@
 	font-family: sans-serif;
 }
 
+body {
+	background: white !important;
+}
+
 .container {
-	background: #f0efe7;
+	background: white;
+	width: 100%;
 }
 
 .admintopbar {
@@ -19,7 +24,7 @@
 .topbar {
 	color: white;
 	height: 80px;
-	background-color: darkgrey;
+	background-color: #49A078;
 	vertical-align: top;
 	display: inline-block;
 	width: 100%;
@@ -45,13 +50,26 @@
 
 .categories {
 	margin-top: 15px;
-	background-color: darkgrey;
+	background-color: #216869;
 	height: 300px;
 	width: 175px;
 	color: white;
 	display: inline-block;
 	border-radius: 3px;
 	padding: 5px;
+}
+
+.pagination {
+  color: black;
+	font-size: 24px;
+	margin-left: 350px !important;
+}
+
+.pagination a {
+	color: black;
+	font-size: 24px;
+	margin: 0px 5px 0px 5px;
+	text-decoration: underline;
 }
 
 .orders {
@@ -87,10 +105,11 @@ tr:nth-child(odd) {
 
 .product_grid {
 	padding: 15px;
-	width: 950px;
-	height: 600px;
+	width: 960px;
+	height: 700px;
 	display: inline-block;
 	vertical-align: top;
+	background-color: white;
 }
 .product {
 	display: inline-block;
