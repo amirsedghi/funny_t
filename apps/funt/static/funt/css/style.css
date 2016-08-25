@@ -1,19 +1,19 @@
-
 .topbar {
 	color: white;
 	height: 80px;
 	background-color: darkgrey;
 	vertical-align: top;
 	display: inline-block;
-	width: 1100px;
+	width: 100%;
 	margin: auto
 
 }
 
 .cartstatus {
 	display: inline-block;
-	margin-left: 80%;
 	vertical-align: top;
+	padding-top: 20px;
+	padding-left: 650px;
 }
 
 .branding {
@@ -30,7 +30,7 @@
 	width: 175px;
 	color: white;
 	display: inline-block;
-	border: 1px solid black;
+	border-radius: 3px;
 	padding: 5px;
 }
 
@@ -71,10 +71,62 @@ tr:nth-child(odd) {
 	height: 600px;
 	display: inline-block;
 	vertical-align: top;
-	border-left: 15px solid yellow;
 }
 .product {
 	display: inline-block;
 	text-align: center;
+	padding: 10px;
+}
+.product a {
+	text-decoration: none;
+	color: black;
+}
+.product a {
+	text-decoration: none;
+	color: black;
+}
+.product a:hover {
+	text-decoration: none;
+	color: grey;
+}
+.product img {
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.product_photos {
+	margin-left: 25px;
+	display: inline-block;
+}
+
+.main_photo img {
+	width: 400px;
+}
+
+.thumbnailz {
+	display: inline-block;
 	padding: 5px;
+
+}
+
+.thumbnailz img {
+	width: 60px;
+	display: inline-block;
+}
+
+.description{
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+	margin-left: 100px;
+	margin-top: 100px;
+	vertical-align: top;
+}
+
+.buy {
+	padding-left: 650px;
+}
+
+.similar_product img {
+	width: 200px;
 }

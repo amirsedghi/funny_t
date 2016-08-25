@@ -3,53 +3,87 @@
   <head>
     <meta charset="utf-8">
     <title>Show</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'funt/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-
-    <div class="container">
-      <div class="topbar">
-        <div class="branding">
-          Funny Tees
-        </div>
-        <div class="cartstatus">
-          <span>Shopping Cart (0)</span>
-        </div>
+    <!-- start topbar -->
+    <div class="topbar">
+      <div class="branding">
+        Funny Tees
       </div>
+      <div class="cartstatus">
+        <a href="/cart"><span>Shopping Cart ( {{cart}} )</span></a>
+      </div>
+    </div>
+    <!-- end topbar -->
+    <p>
       <a href="/">Go Back</a>
-      <div class="images">
+    </p>
+    <!-- start product photos -->
+      <div class="product_photos">
         <h2>{{product.name}}</h2>
-        <div class="">
+        <div class="main_photo">
           <img src="{{product.img_one}}" alt="" />
         </div>
-        <div class="">
+        <div class="thumbnailz">
           <img src="{{product.img_two}}" alt="" />
         </div>
-        <div class="">
+        <div class="thumbnailz">
           <img src="{{product.img_three}}" alt="" />
         </div>
-        <div class="">
+        <div class="thumbnailz">
           <img src="{{product.img_four}}" alt="" />
         </div>
       </div>
-      <p>
-        {{product.description}}
+      <!-- end product photos -->
+      <!-- start description and purchase button -->
+      <p class="description">
+          {{product.description}}
       </p>
-      <form class="" action="/addcart" method="post">
-        {% csrf_token %}
-        <select class="quantity" name="quantity">
-          <option>1 </option>
-          <option>2 </option>
-          <option>3 </option>
-          <option>4 </option>
-        </select>
-        <input type="hidden" name="id" value="{{product.id}}">
-        <input type="submit"  value="Buy">
-      </form>
-
+        <div class="buy">
+          <form class="" action="/addcart" method="post">
+          {% csrf_token %}
+          <select class="quantity" name="quantity">
+            <option> 1 </option>
+            <option> 2 </option>
+            <option> 3 </option>
+            <option> 4 </option>
+          </select>
+          <input type="hidden" name="id" value="{{product.id}}">
+          <input type="submit"  value="Buy">
+        </form>
+        </div>
+      </div>
+      <!-- end description and purchase divs -->
+      <!-- start similar items -->
+      <div class="similar_products">
+        <!-- loop through products -->
+        <h2>Similar Products</h2>
+        <div class="product">
+          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
+          <p>$12.99</p>
+          <h4>Some thing</h4></a>
+        </div>
+        <div class="product">
+          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
+          <p>$12.99</p>
+          <h4>Some thing</h4></a>
+        </div>
+        <div class="product">
+          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
+          <p>$12.99</p>
+          <h4>Some thing</h4></a>
+        </div>
+        <div class="product">
+          <a href="/product/show/{{p.id}}"><img src="http://mediacdn.snorgcontent.com/media/catalog/product/n/o/nodramallama_fullpic.jpg" height='200px' widht='200px' alt="image" />
+          <p>$12.99</p>
+          <h4>Some thing</h4></a>
+        </div>
+      </div>
     </div>
-
   </body>
 </html>
