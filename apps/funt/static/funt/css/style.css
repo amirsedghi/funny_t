@@ -1,35 +1,39 @@
 * {
-	font-family: sans-serif;
+	font-family: 'Baloo Chettan', sans-serif;
 }
 
 body {
-	background: white !important;
+	background-image: url('../images/background.jpg') !important;
+	background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .container {
-	background: white;
+	/*background-color: rgba(200, 200, 200, 0.4);*/
 	width: 100%;
 }
 
 .admintopbar {
 	color: white;
 	height: 80px;
-	background-color: darkred;
+	background-color: rgba(200, 200, 200, 0.6);
 	vertical-align: top;
 	display: inline-block;
 	width: 100%;
 	margin: auto
-	border-radius: 3px;
+	border-radius: 10px;
 }
 .topbar {
 	color: white;
 	height: 80px;
-	background-color: #49A078;
+	background-color: rgba(200, 200, 200, 0.6);
 	vertical-align: top;
 	display: inline-block;
 	width: 100%;
-	margin: auto
-	border-radius: 3px;
+	margin: auto;
+	border-radius: 10px;
+	margin-top: 15px;
+	padding-top: 15px;
 
 }
 
@@ -50,10 +54,10 @@ body {
 
 .categories {
 	margin-top: 15px;
-	background-color: #216869;
+	background-color: rgba(200, 200, 200, 0.4);
 	height: 300px;
 	width: 175px;
-	color: white;
+	color: grey;
 	display: inline-block;
 	border-radius: 3px;
 	padding: 5px;
@@ -109,7 +113,6 @@ tr:nth-child(odd) {
 	height: 700px;
 	display: inline-block;
 	vertical-align: top;
-	background-color: white;
 }
 .product {
 	display: inline-block;
