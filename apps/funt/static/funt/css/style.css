@@ -110,6 +110,10 @@ body {
 	width: 300px;
 }
 
+.orderinfo input{
+	border-radius: 5px;
+}
+
 tr:nth-child(even) {
 	background: #FFF
 }
