@@ -6,40 +6,46 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    {% if request.session.admin == 1 %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'funt/css/productdash.css' %}"media="screen" title="no title"  charset="utf-8">
+    </head>
+    <body>
 
-    <h1>Add Product</h1>
-    <form class="" action="/editing/{{p.id}}" method="post">
-      {% csrf_token %}
-      <input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
-      <input type="text" name="description" value="{{p.description}}" placeholder="Description">
-      <input type="text" name="price" value="{{p.price}}" placeholder="Price">
-      <input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
-      <select class="" name="category" >
-        <option>Category</option>
-        {% for c in categories %}
-        <option>{{c.category}}</option>
-        {% endfor %}
-      </select>
-      <input type="text" name="new_category" value="" placeholder="New Category">
-      <input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
-      <input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
-      <input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
-      <input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
-      <input type="submit" value="Update">
-      <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
-    </form>
-    {% if messages %}
-      {% for m in messages %}
-        <p>
-          {{m}}
-        </p>
-      {% endfor %}
-    {% endif %}
-    {% else %}
-    <h2>You do not have permission to access this page</h2>
-    {% endif %}
+    <div class="admincontainer">
+        <h1>Add Product</h1>
+        {% if request.session.admin == 1 %}
+        <div class="addproduct">
+          <form class="" action="/editing/{{p.id}}" method="post">
+            {% csrf_token %}
+            <input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
+            <input type="text" name="description" value="{{p.description}}" placeholder="Description">
+            <input type="text" name="price" value="{{p.price}}" placeholder="Price">
+            <input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
+            <select class="" name="category" >
+              <option>Category</option>
+              {% for c in categories %}
+              <option>{{c.category}}</option>
+              {% endfor %}
+            </select>
+            <input type="text" name="new_category" value="" placeholder="New Category">
+            <input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
+            <input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
+            <input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
+            <input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
+            <input type="submit" value="Update">
+            <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
+          </form>
+          {% if messages %}
+          {% for m in messages %}
+          <p>
+            {{m}}
+          </p>
+          {% endfor %}
+          {% endif %}
+          {% else %}
+          <h2>You do not have permission to access this page</h2>
+          {% endif %}
+        </div>
+    </div>
   </body>
 </html>

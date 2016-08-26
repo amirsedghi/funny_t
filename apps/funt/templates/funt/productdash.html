@@ -12,78 +12,81 @@
   </head>
   <body>
     {% if request.session.admin == 1 %}
-    <div class="header">
-
-      <div class="search">
-        <form class="" action="/search" method="post">
-          {% csrf_token %}
-          <input type="text" name="search" value="">
-          <input type="submit" value="search">
-        </form>
+    <div class="admincontainer">
+      <div class="header">
+        <div class="search">
+          <form class="" action="/search" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" value="">
+            <input type="submit" value="search">
+          </form>
+        </div>
+        <div class="add">
+          <form class="" action="/add" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Add new product">
+          </form>
+        </div>
+        <div class="logout">
+          <a href="/admin">Logout</a>
+        </div>
       </div>
-      <div class="add">
-        <form class="" action="/add" method="post">
-          {% csrf_token %}
-          <input type="submit" value="Add new product">
-        </form>
+      <div class="products">
+        <table>
+          <tr>
+            <th>
+              Picture
+            </th>
+            <th>
+              ID
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Inventory Count
+            </th>
+            <th>
+              Quantity Sold
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+          {% for p in products %}
+          <tr>
+            <td>
+              <img src="{{p.img_one}}" alt="" />
+            </td>
+            <td>
+              {{p.id}}
+            </td>
+            <td>
+              {{p.name}}
+            </td>
+            <td>
+              {{p.inventory_count}}
+            </td>
+            <td>
+              {{p.quantity_sold}}
+            </td>
+            <td>
+              | <a href="/edit/{{p.id}}">edit</a> | <a href="/delete/{{p.id}}">delete</a> |
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
       </div>
-      <div class="logout">
-        <a href="/admin">Logout</a>
+      <div class="pagination">
+        {% for a in total_page %}
+          <a href="/dashboard/products/{{a}}">{{a}}</a>
+        {% endfor %}
       </div>
+      {% else %}
+      <p>
+        <h2>You do not have the permission to view this page</h2>
+      </p>
+      {% endif %}
     </div>
-    <table>
-      <tr>
-        <th>
-          Picture
-        </th>
-        <th>
-          ID
-        </th>
-        <th>
-          Name
-        </th>
-        <th>
-          Inventory Count
-        </th>
-        <th>
-          Quantity Sold
-        </th>
-        <th>
-          Action
-        </th>
-      </tr>
-      {% for p in products %}
-      <tr>
-        <td>
-          <img src="{{p.img_one}}" alt="" />
-        </td>
-        <td>
-          {{p.id}}
-        </td>
-        <td>
-          {{p.name}}
-        </td>
-        <td>
-          {{p.inventory_count}}
-        </td>
-        <td>
-          {{p.quantity_sold}}
-        </td>
-        <td>
-          <a href="/edit/{{p.id}}">edit</a> <a href="/delete/{{p.id}}">delete</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-    <div class="pagination">
-      {% for a in total_page %}
-        <a href="/dashboard/products/{{a}}">{{a}}</a>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p>
-      <h2>You do not have the permission to view this page</h2>
-    </p>
-    {% endif %}
   </body>
 </html>

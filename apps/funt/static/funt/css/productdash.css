@@ -1,3 +1,55 @@
+
+
+.admincontainer {
+	background-image: url('../images/adminbackground2.jpg') !important;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 900px
+}
+
+.products {
+  width: 750px;
+  margin: auto;
+  margin-top: 100px;
+	-webkit-border-top-right-radius: 60px;
+	-webkit-border-bottom-left-radius: 60px;
+	-moz-border-radius-topright: 60px;
+	-moz-border-radius-bottomleft: 60px;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 60px;
+	background-color: rgba(200, 200, 200, 0.8);
+  padding: 20px;
+}
+
+.adminlogin{
+	width: 400px;
+	height: 300px;
+	margin: auto;
+	margin-top: 250px;
+	padding-top: 60px;
+	-webkit-border-top-right-radius: 60px;
+	-webkit-border-bottom-left-radius: 60px;
+	-moz-border-radius-topright: 60px;
+	-moz-border-radius-bottomleft: 60px;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 60px;
+	background-color: rgba(200, 200, 200, 0.8);
+}
+
+.addproduct{
+	margin: auto;
+	margin-top: 250px;
+	padding-left: 130px;
+	padding-top: 60px;
+	-webkit-border-top-right-radius: 60px;
+	-webkit-border-bottom-left-radius: 60px;
+	-moz-border-radius-topright: 60px;
+	-moz-border-radius-bottomleft: 60px;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 60px;
+	background-color: rgba(200, 200, 200, 0.8);
+}
+
 img{
   width: 50px;
   height: 50px;
@@ -7,14 +59,18 @@ img{
 table{
   text-align: center;
   width: 700px;
-  margin-left: 400px;
-  margin-top: 50px;
 }
 
 tr{
   margin-right: 10px;
 }
 
+.header {
+  background-color: rgba(200, 200, 200, 0.8);
+  width: 800px;
+  margin: auto;
+  border-radius: 20px;
+}
 .header div{
   display: inline-block;
   vertical-align: top;
@@ -22,7 +78,7 @@ tr{
 
 .add{
   display: inline-block;
-  width: 300px;
+  width: 200px;
 }
 
 .search{
@@ -32,7 +88,7 @@ tr{
 
 .logout{
   display: inline-block;
-  width: 300px;
+  width: 200px;
 }
 
 * {
