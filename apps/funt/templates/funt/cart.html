@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>Your Fun Tee Headquarters</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{% static 'funt/js/cart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'funt/js/productdash.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
 
   </head>
@@ -21,7 +21,7 @@
           Funny Tees
         </div>
         <div class="cartstatus">
-          <span>Shopping Cart ({{request.session.sum_item}})</span>
+          <span>Shopping Cart {{request.session.sum_item}}</span>
         </div>
       </div>
 			<!-- grey top bar ends here -->
