@@ -291,3 +291,34 @@ def showcategory(request, category):
         sum_item += int(c['quantity'])
     context = {'products': the_products, 'cart': sum_item, 'categories': categories}
     return render(request, 'funt/category.html', context)
+
+
+def reviews(request, id):
+    the_product = Product.objects.get(id = id)
+    reviews = the_product.product_review.all().order_by('-created_at')
+    context = {'reviews': reviews, 'product': the_product}
+    return render(request, 'funt/reviews.html', context)
+
+def leavereview(request, id):
+    the_product = Product.objects.get(id = id)
+    request.session['check'] = 1
+    if len(request.POST['review'])<1:
+        messages.error(request, "want to leave and empty review? didn't think so ;)")
+        request.session['check'] = 0
+    if request.session['check'] == 1:
+        Review.objects.create(review = request.POST['review'], product = the_product)
+        return redirect('/reviews/' + str(id))
+    else:
+        return redirect('/reviews/' + str(id))
+
+def leavecomment(request, id):
+    the_review = Review.objects.get(id = id)
+    request.session['check'] = 1
+    if len(request.POST['comment'])<1:
+        messages.error(request, "want to leave and empty comment? didn't think so ;)")
+        request.session['check'] = 0
+    if request.session['check'] == 1:
+        Comment.objects.create(comment = request.POST['comment'], review = the_review)
+        return redirect('/reviews/' + str(id))
+    else:
+        return redirect('/reviews/' + str(id))

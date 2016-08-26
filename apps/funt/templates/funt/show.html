@@ -19,14 +19,13 @@
         Funny Tees
       </div>
       <div class="cartstatus">
-        <a href="/cart"><span>Shopping Cart ( {{cart}} )</span></a>
+        <a href="/cart"><span>Shopping Cart  {{cart}} </span></a>
+        | <a href="/">Go Back</a>
       </div>
     </div>
     <!-- end topbar -->
     <div class="container">
-      <p>
-        <a href="/">Go Back</a>
-      </p>
+
       <!-- start product photos -->
         <div class="product_photos">
           <h2 class='title'>{{product.name}}</h2>
@@ -51,10 +50,10 @@
         <div class="desc-div">
           <div class="description">
             {{product.description}}
+            <h5 class="review_link"><a href="/reviews/{{product.id}}">Reviews</a></h5>
           </div>
-          <div class="buy">
-            <form class="" action="/addcart" method="post">
-            {% csrf_token %}
+          <form class="" action="/addcart" method="post">
+          {% csrf_token %}
             <select class="quantity" name="quantity">
               <option> 1 </option>
               <option> 2 </option>
@@ -62,8 +61,10 @@
               <option> 4 </option>
             </select>
             <input type="hidden" name="id" value="{{product.id}}">
-            <input type="submit"  value="Buy">
+            <button type="submit" class="add_button"> Add to cart</button>
           </form>
+          <div class="buy">
+
           </div>
         </div>
 

@@ -20,4 +20,7 @@ urlpatterns = [
     url(r'^process_order$', views.processorder),
     url(r'^orders/show/(?P<id>\d+)$', views.ordershow),
     url(r'^category/(?P<category>\w+)$', views.showcategory),
+    url(r'^reviews/(?P<id>\d+)$', views.reviews),
+    url(r'^review/leave/(?P<id>\d+)$', views.leavereview),
+    url(r'^comment/leave/(?P<id>\d+)$', views.leavecomment),
 ]

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reviews</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'funt/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="branding">
+          Reviews
+        </div>
+        <div class="cartstatus">
+          <a href="/cart"><span>Shopping Cart  {{cart}} </span></a>
+          | <a href="/">  Go Back</a>
+        </div>
+      </div>
+      <div class="review_image">
+        <img src="{{product.img_one}}" alt="" />
+      </div>
+      <div class="reviews">
+        <div class="leave_review">
+          <form class="" action="/review/leave/{{product.id}}" method="post">
+            {% csrf_token %}
+            <p>
+              Anonymous:
+            </p>
+            <input type="text" name="review" value="" placeholder="Review...">
+            <input type="submit" name="" value="Post">
+          </form>
+        </div>
+        <div class="prev_review">
+          <div class="thereview">
+          {% for r in reviews %}
+            <div class="review">
+              <p>
+                {{r.review}}
+              </p>
+            </div>
+            <div class="leave_comment">
+              <form class="" action="/comment/leave/{{r.id}}" method="post">
+                {% csrf_token %}
+                <input type="text" name="comment" value="" placeholder="Comment...">
+                <input type="submit"  value="Post">
+              </form>
+            </div>
+            <div class="comment_sec">
+              {% for c in r.review_comment.all %}
+              <div class="comment">
+                <p>
+                  {{c.comment}}
+                </p>
+              </div>
+            </div>
+
+            {% endfor %}
+          {% endfor %}
+          {% if messages %}
+            {% for m in messages %}
+              <p>
+                {{m}}
+              </p>
+            {% endfor %}
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
