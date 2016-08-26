@@ -146,11 +146,12 @@ tr:nth-child(odd) {
 }
 
 .product_grid {
-	padding: 15px;
+	padding: 25px;
 	width: 960px;
 	height: 700px;
 	display: inline-block;
 	vertical-align: top;
+	margin: auto;
 }
 .product {
 	display: inline-block;

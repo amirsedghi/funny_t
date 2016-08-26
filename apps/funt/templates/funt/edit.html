@@ -12,50 +12,39 @@
     <body>
 
     <div class="admincontainer">
-        <h1>Add Product</h1>
+        <h1>Edit an existing product</h1>
         {% if request.session.admin == 1 %}
         <div class="addproduct">
           <form class="" action="/editing/{{p.id}}" method="post">
             {% csrf_token %}
-            <p>
-              Name <input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
-            </p>
-            <p>
-              Description <input type="text" name="description" value="{{p.description}}" placeholder="Description">
-            </p>
-            <p>
-            Price  <input type="text" name="price" value="{{p.price}}" placeholder="Price">
-            </p>
-            <p>
-                Inventory Account <input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
-            </p>
-            <p>
-              Category <select class="" name="category" >
+            <div class="alternating">
+              <h2 class='alternating'>Name</h2><input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
+              <h2 class='alternating'>Description</h2><input type="text" name="description" value="{{p.description}}" placeholder="Description">
+            </div>
+            <div class="alternating">
+              <h2 class='alternating'> Price</h2><input type="text" name="price" value="{{p.price}}" placeholder="Price">
+              <h2 class='alternating'>Inventory Account </h2><input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
+            </div>
+            <div class="alternating">
+              <h2 class='alternating'>Category</h2> <select class="" name="category" >
                 <option>Category</option>
                 {% for c in categories %}
                 <option>{{c.category}}</option>
                 {% endfor %}
               </select>
-            </p>
-            <p>
-               New Category <input type="text" name="new_category" value="" placeholder="New Category">
-            </p>
-            <p>
-              Image 1 url<input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
-            </p>
-            <p>
-              Image 2 url<input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
-            </p>
-            <p>
-              Image 3 url <input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
-            </p>
-            <p>
-              Image 4 url <input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
-            </p>
-            <p>
-              <input type="submit" value="Update">  <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
-            </p>
-          </form>
+              <h2 class='alternating'>New Category</h2><input type="text" name="new_category" value="" placeholder="New Category">
+            </div>
+
+          <h2 class='alternating'>Image 1 url</h2><input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
+
+          <h2 class='alternating'>Image 2 url</h2><input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
+
+          <h2 class='alternating'>Image 3 url </h2><input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
+
+          <h2 class='alternating'>Image 4 url</h2><input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
+
+          <input type="submit" value="Update">  <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
+            </form>
           {% if messages %}
           {% for m in messages %}
           <p>
