@@ -17,23 +17,44 @@
         <div class="addproduct">
           <form class="" action="/editing/{{p.id}}" method="post">
             {% csrf_token %}
-            <input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
-            <input type="text" name="description" value="{{p.description}}" placeholder="Description">
-            <input type="text" name="price" value="{{p.price}}" placeholder="Price">
-            <input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
-            <select class="" name="category" >
-              <option>Category</option>
-              {% for c in categories %}
-              <option>{{c.category}}</option>
-              {% endfor %}
-            </select>
-            <input type="text" name="new_category" value="" placeholder="New Category">
-            <input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
-            <input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
-            <input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
-            <input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
-            <input type="submit" value="Update">
-            <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
+            <p>
+              Name <input type="text" name="product_name" value="{{p.name}}" placeholder="Name">
+            </p>
+            <p>
+              Description <input type="text" name="description" value="{{p.description}}" placeholder="Description">
+            </p>
+            <p>
+            Price  <input type="text" name="price" value="{{p.price}}" placeholder="Price">
+            </p>
+            <p>
+                Inventory Account <input type="text" name="inventory_count" value="{{p.inventory_count}}" placeholder="Inventory Count">
+            </p>
+            <p>
+              Category <select class="" name="category" >
+                <option>Category</option>
+                {% for c in categories %}
+                <option>{{c.category}}</option>
+                {% endfor %}
+              </select>
+            </p>
+            <p>
+               New Category <input type="text" name="new_category" value="" placeholder="New Category">
+            </p>
+            <p>
+              Image 1 url<input type="text" name="img_one" value="{{p.img_one}}" placeholder="Img One url">
+            </p>
+            <p>
+              Image 2 url<input type="text" name="img_two" value="{{p.img_two}}" placeholder="Img Two url">
+            </p>
+            <p>
+              Image 3 url <input type="text" name="img_three" value="{{p.img_three}}" placeholder="Img Three url">
+            </p>
+            <p>
+              Image 4 url <input type="text" name="img_four" value="{{p.img_four}}" placeholder="Img Four url">
+            </p>
+            <p>
+              <input type="submit" value="Update">  <a href="/dashboard/products/1"><button type="button">Cancel</button></a>
+            </p>
           </form>
           {% if messages %}
           {% for m in messages %}
