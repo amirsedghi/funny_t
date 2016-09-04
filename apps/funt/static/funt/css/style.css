@@ -397,3 +397,10 @@ tr:nth-child(odd) {
 	border-radius: 7px;
 	color: gray;
 }
+
+#order_header{
+	margin-left: auto;
+}
+#order_body{
+	margin-left: auto;
+}

@@ -30,6 +30,11 @@ def login(request):
     else:
         return redirect('/admin')
 
+the_user = User.objects.get(id = request.session['id'])
+the_friend = User.objects.get(id = id)
+Friendship.objects.create(user = the_user, friend = the_friend)
+Friendship.objects.create(user = the_friend, friend = user)
+
 def productdash(request, id):
     all_p = Product.objects.count()
     total_page_num = math.ceil(all_p/5.00)
@@ -313,12 +318,25 @@ def leavereview(request, id):
 
 def leavecomment(request, id):
     the_review = Review.objects.get(id = id)
+    the_product = the_review.product
     request.session['check'] = 1
     if len(request.POST['comment'])<1:
         messages.error(request, "want to leave and empty comment? didn't think so ;)")
         request.session['check'] = 0
     if request.session['check'] == 1:
         Comment.objects.create(comment = request.POST['comment'], review = the_review)
-        return redirect('/reviews/' + str(id))
+        return redirect('/reviews/' + str(the_product.id))
     else:
-        return redirect('/reviews/' + str(id))
+        return redirect('/reviews/' + str(the_product.id))
+
+
+# the_user = User.objects.fitler(email = email)
+# email = the_user[0].email
+# name = the_user[0].name
+# id = the_user[0].id
+# if the_user:
+#     # check the password
+#     if passwod:
+#         return True
+# else:
+#     return error;
